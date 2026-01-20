@@ -1,0 +1,94 @@
+{
+    "info": {
+        "name": "Employee Management System",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Login (Admin)",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"root@sys.com\",\n    \"password\": \"Admin@123\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "http://localhost:3000/auth/login"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Users",
+            "item": [
+                {
+                    "name": "Create Employee",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"new_emp@example.com\",\n    \"password\": \"User@123\",\n    \"role\": \"EMPLOYEE\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "http://localhost:3000/users"
+                    }
+                },
+                {
+                    "name": "Get Profile",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "http://localhost:3000/users/profile"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Attendance",
+            "item": [
+                {
+                    "name": "Clock In",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "http://localhost:3000/attendance/clock-in"
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "token",
+            "value": ""
+        }
+    ]
+}
