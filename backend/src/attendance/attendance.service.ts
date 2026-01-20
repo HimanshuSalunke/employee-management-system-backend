@@ -15,7 +15,7 @@ export class AttendanceService {
   constructor(
     @InjectRepository(Attendance)
     private attendanceRepository: Repository<Attendance>,
-  ) {}
+  ) { }
 
   async clockIn(userId: string) {
     const today = new Date().toISOString().split('T')[0];
